@@ -14,7 +14,7 @@ export default function RegisterPage() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IRegisterUser>();
   const onSubmit = async (data: IRegisterUser) => {
     setDisableSubmit(true)
-    const res = await fetch('http://127.0.0.1:3000/api/user/register', {
+    const res = await fetch('https://127.0.0.1:3000/api/user/register', {
         method: 'POST',
         body: JSON.stringify(data)
     });
