@@ -2,13 +2,13 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import axiosConfig from '../api/api';
 import { useRouter } from 'next/navigation';
 import { ILogin, ILoginAuthorized } from '@/interfaces/login';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../GlobalRedux/user/userSlice';
 import { ButtonComponent } from '@/components/ButtonComponent';
 import { ErrorComponent } from '@/components/ErrorComponent';
+import { IErrorResponse } from '@/utils/error';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,15 +19,19 @@ export default function LoginPage() {
 
   const onSubmit = async (data: ILogin) => {
     setDisableSubmit(true)
-    const res = await axiosConfig.post<ILoginAuthorized | string>('/user/login', data);
-    if(typeof res.data === 'string'){
-      toast(res.data,{
+    const res = await fetch('http://localhost:3000/api/user/login', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    const body = await res.json()
+    if(body.isError){
+      toast(body.message,{
         autoClose: 2500,
         type: 'error',
       });
       setDisableSubmit(false);
     }else{
-      dispath(setUser(res.data))
+      dispath(setUser(body))
       router.push('/');
     }
   };

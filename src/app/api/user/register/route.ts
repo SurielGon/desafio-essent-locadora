@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import bcrypt from 'bcrypt';
 import { prisma } from "../../../../../prisma/client";
+import { HttpError } from "@/utils/error";
 
 export async function POST(request: Request) {
     const userData: User = await request.json().then(body => body)
@@ -10,7 +11,7 @@ export async function POST(request: Request) {
         }
     })
     if(userExists){
-        return new Response("Email já cadastrado");
+        return HttpError({ message: "Email já cadastrado", status: 409 });
     }
     const salt = await bcrypt.genSalt();
     const encryptedPassword = await bcrypt.hash(userData.password, salt);

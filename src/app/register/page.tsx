@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import axiosConfig from '../api/api';
 import { toast } from 'react-toastify';
 import { User } from '@prisma/client';
 import { useState } from 'react';
@@ -15,9 +14,13 @@ export default function RegisterPage() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IRegisterUser>();
   const onSubmit = async (data: IRegisterUser) => {
     setDisableSubmit(true)
-    const res = await axiosConfig.post<User | string>('/user/register', data);
-    if(typeof res.data === 'string'){
-      toast(res.data,{
+    const res = await fetch('http://localhost:3000/api/user/register', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
+    const body = await res.json()
+    if(body.isError){
+      toast(body.message,{
         autoClose: 2500,
         type: 'error',
       })

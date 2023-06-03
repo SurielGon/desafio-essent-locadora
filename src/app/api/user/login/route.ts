@@ -1,3 +1,4 @@
+import { HttpError } from "@/utils/error";
 import { PrismaClient, User } from "@prisma/client";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -11,11 +12,11 @@ export async function POST(request: Request) {
         }
     })
     if(!userExists){
-        return new Response("Usuário não encontrado");
+        return HttpError({ message: "Usuário não encontrado", status: 404 });
     }
     const isMatch = await bcrypt.compare(userData.password, userExists.password);
     if(!isMatch){
-        return new Response("Senha inválida");
+        return HttpError({ message: "Senha inválida", status: 400 });
     }
     const response: Partial<User> = userExists
     delete response.password

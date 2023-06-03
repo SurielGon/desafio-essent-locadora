@@ -1,7 +1,6 @@
 'use client'
 import { Spinner } from "@material-tailwind/react"
 import { useEffect, useState } from "react"
-import axiosConfig from "../api/api"
 import { Movie } from "@prisma/client"
 import { MovieComponent } from "@/components/MovieComponent"
 
@@ -11,8 +10,11 @@ export default function ListMoviePage(){
     useEffect(()=>{
         async function fetchMovies(){
             setIsLoading(true)
-            const res = await axiosConfig.get<Movie[]>('movie/')
-            setMovies(res.data ?? [])
+            const res = await fetch('http://localhost:3000/api/movie', {
+                method: 'GET'
+            })
+            const body = await res.json()
+            setMovies(body)
             setIsLoading(false)
         }
         fetchMovies()

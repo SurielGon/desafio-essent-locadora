@@ -1,5 +1,4 @@
 'use client'
-import axiosConfig from "@/app/api/api";
 import { ButtonComponent } from "@/components/ButtonComponent";
 import { ErrorComponent } from "@/components/ErrorComponent"
 import { IRegisterMovie } from "@/interfaces/movie";
@@ -25,9 +24,13 @@ export default function RegisterMoviePage(){
         quantidadeDisponivel: Number(data.quantidadeDisponivel),
         dataLancamento: new Date(data.dataLancamento)
     }
-    const res = await axiosConfig.post<Movie | string>('/movie', movie);
-    if(typeof res.data === 'string'){
-      toast(res.data,{
+    const res = await fetch('http://localhost:3000/api/movie', {
+        method: 'POST',
+        body: JSON.stringify(movie)
+    });
+    const body = await res.json()
+    if(body.isError){
+      toast(body.message,{
         autoClose: 2500,
         type: 'error',
       })
