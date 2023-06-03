@@ -36,7 +36,7 @@ export default function RegisterMoviePage(){
         quantidadeDisponivel: Number(data.quantidadeDisponivel),
         dataLancamento: new Date(data.dataLancamento)
     }
-    const res = await fetch(`${process.env.DOMAIN_URL}/api/movie`, {
+    const res = await fetch(`/api/movie`, {
         method: 'POST',
         body: JSON.stringify(movie)
     });
@@ -46,15 +46,14 @@ export default function RegisterMoviePage(){
         autoClose: 2500,
         type: 'error',
       })
-      setDisableSubmit(false)
     }else{
       toast("Filme cadastrado com sucesso!",{
         autoClose: 2500,
         type: 'success',
       })
-      setDisableSubmit(false)
       router.back()
     }
+    setDisableSubmit(false)
   };
 
     return <main className="flex min-h-screen flex-col items-center justify-between p-24">

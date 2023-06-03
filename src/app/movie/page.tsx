@@ -24,7 +24,7 @@ export default function ListMoviePage(){
     useEffect(()=>{
         async function fetchMovies(){
             setIsLoading(true)
-            const res = await fetch(`${process.env.DOMAIN_URL}/api/movie`, {
+            const res = await fetch(`/api/movie`, {
                 method: 'GET'
             })
             const body = await res.json()

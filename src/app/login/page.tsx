@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../GlobalRedux/user/userSlice';
 import { ButtonComponent } from '@/components/ButtonComponent';
 import { ErrorComponent } from '@/components/ErrorComponent';
-import { IErrorResponse } from '@/utils/error';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,7 +18,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: ILogin) => {
     setDisableSubmit(true)
-    const res = await fetch(`${process.env.DOMAIN_URL}/api/user/login`, {
+    const res = await fetch(`/api/user/login`, {
       method: 'POST',
       body: JSON.stringify(data)
     });

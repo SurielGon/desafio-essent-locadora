@@ -6,14 +6,15 @@ import { useState } from 'react';
 import { IRegisterUser } from '@/interfaces/register';
 import { ErrorComponent } from '@/components/ErrorComponent';
 import { ButtonComponent } from '@/components/ButtonComponent';
+import { configDotenv } from 'dotenv';
 
 export default function RegisterPage() {
   const router = useRouter();
   const [disableSubmit, setDisableSubmit] = useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IRegisterUser>();
   const onSubmit = async (data: IRegisterUser) => {
-    setDisableSubmit(true)
-    const res = await fetch(`${process.env.DOMAIN_URL}/api/user/register`, {
+    setDisableSubmit(true)    
+    const res = await fetch(`/api/user/register`, {
         method: 'POST',
         body: JSON.stringify(data)
     });
