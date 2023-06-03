@@ -10,7 +10,7 @@ export default function ListMoviePage(){
     useEffect(()=>{
         async function fetchMovies(){
             setIsLoading(true)
-            const res = await fetch('http://localhost:3000/api/movie', {
+            const res = await fetch('http://127.0.0.1:3000/api/movie', {
                 method: 'GET'
             })
             const body = await res.json()
