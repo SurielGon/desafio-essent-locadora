@@ -24,7 +24,7 @@ export default function RegisterMoviePage(){
         quantidadeDisponivel: Number(data.quantidadeDisponivel),
         dataLancamento: new Date(data.dataLancamento)
     }
-    const res = await fetch('https://127.0.0.1:3000/api/movie', {
+    const res = await fetch('http://127.0.0.1:3000/api/movie', {
         method: 'POST',
         body: JSON.stringify(movie)
     });

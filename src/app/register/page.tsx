@@ -14,7 +14,8 @@ export default function RegisterPage() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IRegisterUser>();
   const onSubmit = async (data: IRegisterUser) => {
     setDisableSubmit(true)
-    const res = await fetch('https://127.0.0.1:3000/api/user/register', {
+    try{
+      const res = await fetch('https://127.0.0.1:3000/api/user/register', {
         method: 'POST',
         body: JSON.stringify(data)
     });
@@ -31,6 +32,9 @@ export default function RegisterPage() {
         type: 'success',
       })
       router.push('/login')
+    }
+    }catch(err){
+      console.log(err)
     }
   };
 
