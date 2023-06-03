@@ -17,10 +17,10 @@ export function NavBarComponent(){
                 user && <>
                 <span className="bg-white border h-full"></span>
             <ul className="inline-flex flex-1 gap-x-6">
-                <li className="">
+                <li>
                     <LinkComponent href="/" title="Home"/>
                 </li>
-                <li className="">
+                <li>
                     <LinkComponent href="/movie" title="Filmes"/>
                 </li>
             </ul>
