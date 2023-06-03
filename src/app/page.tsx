@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useSelector } from "react-redux";
@@ -11,9 +10,13 @@ export default function Home() {
   const router = useRouter();
   const user = useSelector((state: RootState)=> state.loggedUser.user)
   
-  if(!user){
-    router.push('/login')
-  }
+  useEffect(()=>{
+    if(!user){
+      router.push('/login')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[user])
+  
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
