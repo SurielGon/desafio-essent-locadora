@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./GlobalRedux/store";
 import { ButtonComponent } from "@/components/ButtonComponent";
 import CardComponent from "@/components/CardComponent";
+import { Spinner } from "@material-tailwind/react";
 
 export default function Home() {
   const router = useRouter();
@@ -18,8 +19,7 @@ export default function Home() {
   },[user])
   
 
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+  return user ? <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <CardComponent 
         title="Filmes" 
         body={<div>
@@ -46,6 +46,8 @@ export default function Home() {
           </div>
         }
         />
-    </main>
-  )
+    </main> : <div className="grid h-full place-items-center">
+          <Spinner className="h-20 w-20"/>
+        </div>
+        
 }

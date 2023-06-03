@@ -2,7 +2,6 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { User } from '@prisma/client';
 import { useState } from 'react';
 import { IRegisterUser } from '@/interfaces/register';
 import { ErrorComponent } from '@/components/ErrorComponent';
@@ -14,8 +13,7 @@ export default function RegisterPage() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IRegisterUser>();
   const onSubmit = async (data: IRegisterUser) => {
     setDisableSubmit(true)
-    try{
-      const res = await fetch('https://127.0.0.1:3000/api/user/register', {
+    const res = await fetch(`${process.env.DOMAIN_URL}/api/user/register`, {
         method: 'POST',
         body: JSON.stringify(data)
     });
@@ -25,7 +23,6 @@ export default function RegisterPage() {
         autoClose: 2500,
         type: 'error',
       })
-      setDisableSubmit(false)
     }else{
       toast("Usuário registrado com sucesso!",{
         autoClose: 2500,
@@ -33,9 +30,7 @@ export default function RegisterPage() {
       })
       router.push('/login')
     }
-    }catch(err){
-      console.log(err)
-    }
+    setDisableSubmit(false)
   };
 
   return (

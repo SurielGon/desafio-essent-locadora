@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: ILogin) => {
     setDisableSubmit(true)
-    const res = await fetch('https://desafio-essent-locadora.vercel.app/api/user/login', {
+    const res = await fetch(`${process.env.DOMAIN_URL}/api/user/login`, {
       method: 'POST',
       body: JSON.stringify(data)
     });

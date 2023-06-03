@@ -5,7 +5,7 @@ import { IRegisterMovie } from "@/interfaces/movie";
 import { brlToNumber } from "@/utils/money";
 import { Movie } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CurrencyInput from "react-currency-input-field";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -24,7 +24,7 @@ export default function RegisterMoviePage(){
         quantidadeDisponivel: Number(data.quantidadeDisponivel),
         dataLancamento: new Date(data.dataLancamento)
     }
-    const res = await fetch('http://127.0.0.1:3000/api/movie', {
+    const res = await fetch(`${process.env.DOMAIN_URL}/api/movie`, {
         method: 'POST',
         body: JSON.stringify(movie)
     });

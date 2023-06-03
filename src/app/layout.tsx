@@ -18,7 +18,7 @@ export default function RootLayout({
           <header>
             <NavBarComponent/>
           </header>
-          <div className='m-5 h-full'>
+          <div className='m-5 h-5/6'>
             {children}
           </div>
           <ToastContainer />
