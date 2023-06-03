@@ -1,18 +1,30 @@
 'use client'
+import { RootState } from "@/app/GlobalRedux/store";
 import { ButtonComponent } from "@/components/ButtonComponent";
 import { ErrorComponent } from "@/components/ErrorComponent"
 import { IRegisterMovie } from "@/interfaces/movie";
 import { brlToNumber } from "@/utils/money";
 import { Movie } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CurrencyInput from "react-currency-input-field";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 export default function RegisterMoviePage(){
-
   const router = useRouter();
+  const user = useSelector((state: RootState)=> state.loggedUser.user)
+  
+  useEffect(()=>{
+    if(!user){
+      router.push('/login')
+    }else if(user.tipo !== 'DIRETOR'){
+      router.push('/home')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[user])
+
   const [disableSubmit, setDisableSubmit] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm<IRegisterMovie>();
   const onSubmit = async (data: IRegisterMovie) => {
