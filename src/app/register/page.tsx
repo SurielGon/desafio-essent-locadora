@@ -1,5 +1,4 @@
 "use client";
-import InputComponent from '@/components/InputComponent';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { POST } from '../api/user/register/route';
