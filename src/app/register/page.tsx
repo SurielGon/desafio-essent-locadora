@@ -1,9 +1,8 @@
 "use client";
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { POST } from '../api/user/register/route';
 import axiosConfig from '../api/api';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { User } from '@prisma/client';
 import { useState } from 'react';
 import { IRegisterUser } from '@/interfaces/register';
