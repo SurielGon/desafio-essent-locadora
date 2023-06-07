@@ -19,7 +19,7 @@ export function MovieComponent({ movie }: IMovieComponent){
                 <p className="text-white">Valor da Locação: R${(movie.precoLocacao/100).toFixed(2)}</p>
                 <p className="text-white">Quantidade Disponivel: {movie.quantidadeDisponivel}</p>
         </div>}
-        footer={<div className="flex flex-row justify-end">
+        footer={<div className="flex flex-row justify-center">
             <div className="flex flex-col gap-y-3">
                 <ButtonComponent
                     onClick={()=>{ setShow(true) }}
