@@ -31,7 +31,7 @@ model Movie {
   dataLancamento       DateTime
   imagemUrl            String
   sinopse              String
-  elenco               String[]
+  elenco               String
   categoria            String
   precoLocacao         Int
   quantidadeDisponivel Int
