@@ -17,16 +17,16 @@ enum userType {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
+  id       Int           @id @default(autoincrement())
   nome     String
-  email    String    @unique
+  email    String        @unique
   password String
-  tipo     userType  @default(CLIENTE)
-  Locacao  Locacao[]
+  tipo     userType      @default(CLIENTE)
+  Locacao  RentedMovie[]
 }
 
 model Movie {
-  id                   Int       @id @default(autoincrement())
+  id                   Int           @id @default(autoincrement())
   titulo               String
   dataLancamento       DateTime
   imagemUrl            String
@@ -35,7 +35,7 @@ model Movie {
   categoria            String
   precoLocacao         Int
   quantidadeDisponivel Int
-  Locacao              Locacao[]
+  Locacao              RentedMovie[]
 }
 
 enum rentalSituation {
@@ -44,7 +44,7 @@ enum rentalSituation {
   entregue
 }
 
-model Locacao {
+model RentedMovie {
   id              Int             @id @default(autoincrement())
   locador         User            @relation(fields: [userId], references: [id])
   filme           Movie           @relation(fields: [movieId], references: [id])
