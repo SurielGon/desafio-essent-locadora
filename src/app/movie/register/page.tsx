@@ -98,14 +98,14 @@ export default function RegisterMoviePage(){
                     </div>
                     <div className="flex flex-col">
                         <label className='mt-3'>URL da Imagem</label>
-                        <input placeholder="URL da imagem" className='p-1 rounded outline outline-1 outline-offset-1 focus:outline-none focus:ring focus:border-blue-500' {...register("imagemUrl", { required: true })} />
+                        <input placeholder="URL da imagem" type='url' className='p-1 rounded outline outline-1 outline-offset-1 focus:outline-none focus:ring focus:border-blue-500' {...register("imagemUrl", { required: true })} />
                         <ErrorComponent msg='URL da Imagem é obrigatória' show={!!errors.imagemUrl} />
                     </div>
                 </div>
 
                 <label className='mt-3'>Elenco</label>
-                <input placeholder="Leonardo DiCaprio, Morgan Freeman" type='text' className='p-1 rounded outline outline-1 outline-offset-1 focus:outline-none focus:ring focus:border-blue-500' {...register("imagemUrl", { required: true })} />
-                <ErrorComponent msg='Link da Imagem é obrigatório' show={!!errors.imagemUrl} />
+                <input placeholder="Leonardo DiCaprio, Morgan Freeman" type='text' className='p-1 rounded outline outline-1 outline-offset-1 focus:outline-none focus:ring focus:border-blue-500' {...register("elenco", { required: true })} />
+                <ErrorComponent msg='Elenco é obrigatório' show={!!errors.elenco} />
 
                 <label className='mt-3'>Sinopse</label>
                 <textarea placeholder="Descreva a sinopse do filme" className='p-1 rounded outline outline-1 outline-offset-1 focus:outline-none focus:ring focus:border-blue-500' {...register("sinopse", { required: true })} />
