@@ -1,13 +1,13 @@
-import { User } from "@prisma/client"
+import { User } from '@prisma/client';
 
 export interface ILogin {
-    email: string
-    password: string
-} 
-  
-export interface ILoggedUser extends Omit<User, 'password'>{}
+  email: string;
+  password: string;
+}
+
+export interface ILoggedUser extends Omit<User, 'password'> {}
 
 export interface ILoginAuthorized {
-    user?: ILoggedUser
-    acessToken?: string
-} 
+  user?: ILoggedUser;
+  acessToken?: string;
+}

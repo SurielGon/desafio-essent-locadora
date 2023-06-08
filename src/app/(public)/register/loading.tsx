@@ -1,6 +1,6 @@
-'use client'
-import LoadingComponent from "@/components/LoadingComponent"
+'use client';
+import LoadingComponent from '@/components/LoadingComponent';
 
 export default function PublicLoading() {
-    return <LoadingComponent/>
-}  
+  return <LoadingComponent />;
+}

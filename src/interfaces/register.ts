@@ -1,3 +1,3 @@
-import { User } from "@prisma/client";
+import { User } from '@prisma/client';
 
 export interface IRegisterUser extends Omit<User, 'id'> {}

@@ -1,29 +1,26 @@
-'use client'
-import './globals.css'
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+'use client';
 import { NavBarComponent } from '@/components/NavBarComponent';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Providers } from './GlobalRedux/provider';
+import './globals.css';
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
   return (
-    <html lang="en">
+    <html lang='en'>
       <body>
         <Providers>
           <header>
-            <NavBarComponent/>
+            <NavBarComponent />
           </header>
-          <div className='m-5 h-5/6'>
-            {children}
-          </div>
+          <div className='m-5 h-5/6'>{children}</div>
           <ToastContainer />
         </Providers>
       </body>
     </html>
-  )
+  );
 }
