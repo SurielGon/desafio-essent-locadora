@@ -18,7 +18,7 @@ export default function RegisterMoviePage(){
   
   useEffect(()=>{
     if(!user){
-      router.push('/login')
+      router.push('/')
     }else if(user.tipo !== 'DIRETOR'){
       router.push('/home')
     }
