@@ -20,6 +20,8 @@ export function NavProfileComponent({ user, onExit }: INavProfileComponent){
                 <span className="bg-white border h-full"></span>
                 <LinkComponent className="text-md hover:text-red-500" onClick={onExit} href="/" title="Sair"/>
             </div>)
+        }else{
+            setComponent(<></>)
         }
     },[user, onExit])
 

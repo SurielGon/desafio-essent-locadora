@@ -13,9 +13,17 @@ export const userSlice = createSlice({
     initialState: initialState,
     reducers: {
         setUser: (state, action) => {
-            state.user = action.payload?.user
-            state.acessToken = action.payload?.acessToken
-            localStorage.setItem('loggedUser', JSON.stringify(action.payload))
+            const payload = action.payload
+            if(payload){
+                state.user = action.payload?.user
+                state.acessToken = action.payload?.acessToken
+                localStorage.setItem('loggedUser', JSON.stringify(action.payload))
+            }else{
+                state.user = undefined
+                state.acessToken = undefined
+                localStorage.removeItem('loggedUser')
+            }
+            
         },
     }
 })

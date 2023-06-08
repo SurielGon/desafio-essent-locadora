@@ -24,6 +24,8 @@ export function NavMenuComponent({ user }: INavMenuComponent){
                     </li>
                 </ul>
             </>)
+        }else{
+            setComponent(<></>)
         }
     },[user])
 
