@@ -22,7 +22,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: ILogin) => {
     setDisableSubmit(true);
-    const res = await fetch(`/api/user/login`, {
+    const res = await fetch(`http://localhost:3000/api/user/login`, {
       method: 'POST',
       body: JSON.stringify(data)
     });
@@ -38,7 +38,7 @@ export default function LoginPage() {
       router.push('/home');
     }
   };
-
+  
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
       <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
@@ -67,6 +67,5 @@ export default function LoginPage() {
           Entrar
         </ButtonComponent>
       </form>
-    </main>
-  );
+    </main>);
 }
