@@ -22,7 +22,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data: ILogin) => {
     setDisableSubmit(true);
-    const res = await fetch(`https://localhost:3000/api/user/login`, {
+    const res = await fetch(`${process.env.DOMAIN_URL}/api/user/login`, {
       method: 'POST',
       body: JSON.stringify(data)
     });
