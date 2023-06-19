@@ -1,4 +1,3 @@
-'use client';
 import { NavBarComponent } from '@/components/NavBarComponent';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

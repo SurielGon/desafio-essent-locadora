@@ -1,3 +1,4 @@
+"use client"
 import { numberToBrl } from '@/utils/money';
 import { Movie } from '@prisma/client';
 import { useState } from 'react';
@@ -37,7 +38,7 @@ export function MovieComponent({ movie }: IMovieComponent) {
           </div>
         }
       />
-      <ModalComponent
+      <ModalComponent      
         showModal={show}
         title={movie.titulo}
         body={movie.sinopse}
