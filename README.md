@@ -1,3 +1,9 @@
+# Observações
+1. Parece que o ISR está instável, valores maiores que 0 para a prop revalidate fazem prod crashar
+2. Teria sido MUITO melhor aplicar validações por cookie, do jeito que está agora fica um tanto inviável de realizar validações por token
+
+# =================================
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
