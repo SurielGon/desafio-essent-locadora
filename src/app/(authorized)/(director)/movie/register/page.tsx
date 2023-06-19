@@ -40,7 +40,7 @@ export default function RegisterMoviePage() {
       quantidadeDisponivel: Number(data.quantidadeDisponivel),
       dataLancamento: new Date(data.dataLancamento)
     };
-    const res = await fetch(`http://localhost:3000/api/movie`, {
+    const res = await fetch(`https://localhost:3000/api/movie`, {
       method: 'POST',
       body: JSON.stringify(movie)
     });
