@@ -17,7 +17,7 @@ export default function RegisterPage() {
   } = useForm<IRegisterUser>();
   const onSubmit = async (data: IRegisterUser) => {
     setDisableSubmit(true);
-    const res = await fetch(`${process.env.DOMAIN_URL}/api/user/register`, {
+    const res = await fetch(`/api/user/register`, {
       method: 'POST',
       body: JSON.stringify(data)
     });

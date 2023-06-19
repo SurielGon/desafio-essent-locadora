@@ -4,7 +4,7 @@ import { Movie } from '@prisma/client';
 export const revalidate = 0;
 
 export default async function ListMoviePage() {
-  const res = await fetch(`${process.env.DOMAIN_URL}/api/movie`, {
+  const res = await fetch(`/api/movie`, {
     method: 'GET'
   });
   const body = await res.json() as Movie[];
