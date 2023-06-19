@@ -1,18 +1,12 @@
 'use client';
 import { ButtonComponent } from '@/components/ButtonComponent';
 import CardComponent from '@/components/CardComponent';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../GlobalRedux/store';
+import Link from 'next/link';
 
 export default function Home() {
-  const router = useRouter();
   const user = useSelector((state: RootState) => state.loggedUser.user);
-  const [isLoadingMovieRegistration, setIsLoadingMovieRegistration] =
-    useState(false);
-  const [isLoadingMovieList, setIsLoadingMovieList] = useState(false);
-  const isDisabled = isLoadingMovieRegistration || isLoadingMovieList;
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
       <CardComponent
@@ -26,27 +20,17 @@ export default function Home() {
         }
         footer={
           <div className='flex gap-x-3'>
-            <ButtonComponent
-              isLoading={isLoadingMovieList}
-              disabled={isDisabled}
-              onClick={() => {
-                setIsLoadingMovieList(true);
-                router.push('/movie');
-              }}
-            >
-              Locar
-            </ButtonComponent>
-            {user?.tipo === 'DIRETOR' && (
-              <ButtonComponent
-                isLoading={isLoadingMovieRegistration}
-                disabled={isDisabled}
-                onClick={() => {
-                  setIsLoadingMovieRegistration(true);
-                  router.push('/movie/register');
-                }}
-              >
-                Cadastrar
+            <Link href={'/movie'}>
+              <ButtonComponent>
+                Locar
               </ButtonComponent>
+            </Link>
+            {user?.tipo === 'DIRETOR' && (
+              <Link href={'/movie/register'}>
+                <ButtonComponent>
+                  Cadastrar
+                </ButtonComponent>
+              </Link>
             )}
           </div>
         }
