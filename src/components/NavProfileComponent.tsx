@@ -1,7 +1,7 @@
 'use client';
 import { ILoggedUser } from '@/interfaces/login';
 import { useEffect, useState } from 'react';
-import { LinkComponent } from './LinkComponent';
+import Link from 'next/link';
 
 interface INavProfileComponent {
   user?: ILoggedUser;
@@ -17,12 +17,13 @@ export function NavProfileComponent({ user, onExit }: INavProfileComponent) {
         <div className='flex gap-x-6'>
           Bem vindo {user.nome}
           <span className='bg-white border h-full'></span>
-          <LinkComponent
-            className='text-md hover:text-red-500'
-            onClick={onExit}
-            href='/'
-            title='Sair'
-          />
+            <Link
+              onClick={onExit}
+              className={`text-md hover:text-red-500`}
+              href={'/'}
+            >
+              Sair
+            </Link>
         </div>
       );
     } else {
